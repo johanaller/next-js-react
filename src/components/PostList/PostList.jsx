@@ -10,15 +10,23 @@ function PostList() {
         setBodyText(event.target.value)
     };
 
+
     const [authorName, setAuthorName] = useState("");
     const changeAuthorHandler = (event) => {
         setAuthorName(event.target.value)
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+        console.log('toggle modal clicked', isModalOpen)
+    };
+
     return (
         <>
-            <Modal>
-                <NewPost  onAuthorChange={changeAuthorHandler} onBodyChange={changeBodyHandler} />
+            <Modal isOpen={isModalOpen} onClose={toggleModal}>
+                <NewPost onAuthorChange={changeAuthorHandler} onBodyChange={changeBodyHandler} />
             </Modal>
             <ul className={styles.posts}>
                 <Post author={authorName} body={bodyText} />
