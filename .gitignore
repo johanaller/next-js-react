@@ -1,0 +1,4 @@
+*.exe
+*.o
+*.out
+node_modules/
