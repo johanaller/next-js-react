@@ -1,6 +1,6 @@
 import styles from "./NewPost.module.css"
 
-function NewPost({ changeBodyHandler, changeAuthorHandler }) {
+function NewPost({ changeBodyHandler, changeAuthorHandler}) {
     return (
         <form className={styles.form}>
             <p>

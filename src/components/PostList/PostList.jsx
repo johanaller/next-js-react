@@ -1,7 +1,8 @@
-import NewPost from "./NewPost";
-import Post from "./Post";
+import NewPost from "../NewPost/NewPost";
+import Post from "../Post/Post";
 import styles from "./PostList.module.css"
 import { useState } from "react";
+import Modal from "../Modal/Modal";
 
 function PostList() {
     const [bodyText, setBodyText] = useState("");
@@ -16,13 +17,15 @@ function PostList() {
 
     return (
         <>
-            <NewPost {...{ changeAuthorHandler, changeBodyHandler }} />
+            <Modal>
+                <NewPost  onAuthorChange={changeAuthorHandler} onBodyChange={changeBodyHandler} />
+            </Modal>
             <ul className={styles.posts}>
                 <Post author={authorName} body={bodyText} />
                 <Post author="bonny" body="says lets go" />
                 <Post author="conny" body="says lets roll" />
                 <Post author="sonny" body="says ive got a ponny" />
-            </ul>
+            </ul >
         </>
     )
 }
