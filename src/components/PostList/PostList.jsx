@@ -5,29 +5,30 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 
 function PostList() {
-    const [bodyText, setBodyText] = useState("");
-    const changeBodyHandler = (event) => {
-        setBodyText(event.target.value)
-    };
-
-
+    
     const [authorName, setAuthorName] = useState("");
+    const [bodyText, setBodyText] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(true);
+    
     const changeAuthorHandler = (event) => {
         setAuthorName(event.target.value)
     };
 
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const changeBodyHandler = (event) => {
+        setBodyText(event.target.value)
+    };
 
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-        console.log('toggle modal clicked', isModalOpen)
+    const closeModalHandler = () => {
+        // Call the onClose function when the backdrop is clicked
+        console.log("onClose clicked")
+        setIsModalOpen(false); 
     };
 
     return (
         <>
-            <Modal isOpen={isModalOpen} onClose={toggleModal}>
+            { isModalOpen &&<Modal isOpen={isModalOpen} onClose={closeModalHandler}>
                 <NewPost onAuthorChange={changeAuthorHandler} onBodyChange={changeBodyHandler} />
-            </Modal>
+            </Modal>}
             <ul className={styles.posts}>
                 <Post author={authorName} body={bodyText} />
                 <Post author="bonny" body="says lets go" />
