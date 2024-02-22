@@ -1,6 +1,6 @@
 import styles from "./Modal.module.css"
 
-function Modal({ children, onClose, isOpen }) {
+function Modal({ children, onClose }) {
 
     const handleModalClick = (event) => {
         // Prevent the click event from bubbling up to the backdrop
