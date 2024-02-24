@@ -45,6 +45,7 @@
 
 .actions button[type='button'] {
   background-color: transparent;
+  border: 1px solid #34036c;
 }
 
 .actions button[type='button']:hover {
